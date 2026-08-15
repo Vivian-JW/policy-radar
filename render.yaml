@@ -1,0 +1,17 @@
+# Render Blueprint — 中国城市人社惠企政策雷达系统（静态站）
+# 使用方法：在 render.com 选择 New -> Blueprint 并连接本仓库，或直接点击
+# https://render.com/deploy?repo=https://github.com/Vivian-JW/policy-radar
+services:
+  - type: web
+    name: policy-radar
+    runtime: static
+    buildCommand: echo "Static site - no build required"
+    staticPublishPath: ./
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: no-cache
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
